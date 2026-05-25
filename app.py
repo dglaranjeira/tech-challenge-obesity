@@ -214,15 +214,8 @@ if pagina == "Predição":
                 'com base em hábitos alimentares, histórico familiar, atividade física e estilo de vida.</div>',
                 unsafe_allow_html=True)
     st.markdown('<div class="info-box"><b>Aviso importante:</b> este sistema é uma ferramenta de apoio à decisão '
-                'e não substitui avaliação médica profissional.<br><br>'
-                'As variáveis <b>peso</b> e <b>altura</b> foram removidas do modelo para reduzir risco de '
-                '<i>data leakage</i>, já que o nível de obesidade pode estar diretamente relacionado ao IMC.</div>',
+                'e não substitui avaliação médica profissional.<br><br>',
                 unsafe_allow_html=True)
-
-    c1, c2, c3 = st.columns(3)
-    with c1: card_kpi("Modelo", model_name)
-    with c2: card_kpi("Acurácia CV K=10", f"{acuracia:.1%}")
-    with c3: card_kpi("Variáveis usadas", str(len(colunas_modelo)))
 
     st.divider()
     st.markdown('<div class="section-title">Dados do Paciente</div>', unsafe_allow_html=True)
@@ -527,9 +520,6 @@ elif pagina == "Dashboard Analítico":
     st.markdown('<div class="subtitle">Insights sobre a distribuição dos níveis de obesidade e fatores '
                 'associados ao comportamento, histórico familiar e estilo de vida dos pacientes.</div>',
                 unsafe_allow_html=True)
-    st.markdown('<div class="info-box">Peso e altura foram retirados para evitar dataleakage.'
-                'A análise enfatiza fatores comportamentais e de estilo de vida.</div>',
-                unsafe_allow_html=True)
 
     # KPIs
     obesos     = df_dash["Obesity"].isin(["Obesity_Type_I","Obesity_Type_II","Obesity_Type_III"]).mean()*100
@@ -680,11 +670,10 @@ else:
                 unsafe_allow_html=True)
 
     st.markdown('<div class="section-title">Prevenção de Data Leakage</div>', unsafe_allow_html=True)
-    st.markdown('<div class="info-box">As variáveis <b>Weight</b> e <b>Height</b> foram removidas do modelo '
-                'final, pois o nível de obesidade pode estar diretamente relacionado ao IMC, que utiliza '
-                'peso e altura em seu cálculo.<br><br>'
-                'Com essa decisão, o modelo passa a utilizar fatores comportamentais e de estilo de vida, '
-                'tornando a solução mais robusta e mais útil como ferramenta de apoio à triagem.</div>',
+    st.markdown('<div class="info-box"><b>Aviso importante:</b> este sistema é uma ferramenta de apoio à decisão '
+                'e não substitui avaliação médica profissional.<br><br>'
+                'As variáveis <b>peso</b> e <b>altura</b> foram removidas do modelo para reduzir risco de '
+                '<i>data leakage</i>, já que o nível de obesidade pode estar diretamente relacionado ao IMC.</div>',
                 unsafe_allow_html=True)
 
     st.markdown('<div class="section-title">Modelo Utilizado</div>', unsafe_allow_html=True)

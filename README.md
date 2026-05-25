@@ -25,7 +25,7 @@ Acesse a aplicação no Streamlit:
 
 O desafio propõe o desenvolvimento de uma pipeline de Machine Learning para prever se uma pessoa apresenta ou pode vir a apresentar obesidade, com assertividade mínima de 75%.
 
-Além da predição, a solução também apresenta uma visão analítica dos dados para apoiar a equipe médica na interpretação dos principais fatores associados ao nível de obesidade.
+Além da predição, a solução apresenta uma visão analítica dos dados e um **módulo de persistência em banco de dados** para apoiar a equipe médica na interpretação e coleta de novos padrões clínicos.
 
 ---
 
@@ -90,7 +90,8 @@ Foram comparados diferentes algoritmos de classificação:
 - Extra Trees;
 - Gradient Boosting;
 - SVC;
-- KNN.
+- KNN;
+- XGBoost
 
 A escolha do modelo final levou em consideração não apenas a acurácia, mas também:
 
@@ -117,7 +118,7 @@ RandomForestClassifier(
     max_features="sqrt",
     random_state=42
 )
-
+```
 
 ## ✅ Resultados Obtidos
 
@@ -133,9 +134,9 @@ O modelo atende ao requisito mínimo de assertividade acima de 75% e apresenta m
 
 ---
 
-## 📈 Dashboard Analítico
+## 📈 Recursos da Aplicação Streamlit
 
-A aplicação possui um dashboard em português com:
+### Dashboard
 
 - total de pacientes;
 - percentual de pacientes com obesidade;
@@ -148,6 +149,17 @@ A aplicação possui um dashboard em português com:
 - consumo de alimentos calóricos;
 - meio de transporte;
 - importância das variáveis do modelo.
+
+### Painel de Predição Avançado
+
+ - Gráfico de Probabilidade Clínico: Exibição das chances do paciente pertencer a cada classe através de um gráfico de barras ordenado de forma estática e progressiva por nível de gravidade (de Abaixo do Peso até Obesidade Tipo III).
+ - Cores Semânticas de Alerta: Mapeamento visual customizado no Plotly (escala Azul $\rightarrow$ Verde $\rightarrow$ Amarelo $\rightarrow$ Vermelho) para rápida absorção diagnóstica.
+ - Validação por IMC Real: Formulário interativo paralelo que calcula o IMC clínico tradicional e compara em tempo real se a predição baseada em comportamento coincide ou diverge do cenário físico atual do paciente.
+
+### Integração com Banco de Dados Nuvem (Supabase)
+- Módulo de Feedback Loop: Interface para o médico auditar a predição, selecionar a "Classe Real" confirmada em consulta e salvar o registro diretamente em um banco de dados relacional (PostgreSQL via Supabase).
+ - Histórico em Tempo Real: Componente de expansão que consulta o banco de dados via API, exibe os últimos 20 registros avaliados na instituição e permite o download imediato da base atualizada em formato CSV para futuros retreinos do modelo.
+ - Segurança da Informação: Credenciais de conexão e chaves de API totalmente blindadas no servidor através do gerenciador de credenciais seguras do Streamlit (st.secrets).
 
 ---
 
@@ -169,10 +181,7 @@ tech-challenge-obesity/
 ├── app.py
 ├── requirements.txt
 ├── runtime.txt
-├── Obesity.csv
-├── obesity_dashboard.csv
-├── modelo_obesidade.pkl
-├── colunas_modelo.pkl
-├── label_encoder.pkl
+├── obesity.csv
+├── model_pipeline.pkl
 ├── notebook_modelagem.ipynb
 └── README.md ```
