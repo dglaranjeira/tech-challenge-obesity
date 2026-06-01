@@ -45,6 +45,11 @@ A aplicação final inclui:
 
 🔗 https://tech-challenge-obesity-631788291348.us-central1.run.app - alternativa via GCP(Cloud Run).
 
+#### Outros links e materias:
+
+Slides de apresentação e vídeo: 🔗 https://drive.google.com/drive/folders/1YSJFL4jmzgZp_q1w0zhOQWYHJvMo-4ja?usp=sharing
+
+Link alternativo ao vídeo no youtube: 🔗 https://www.youtube.com/watch?v=UmQolHrW-MA
 
 ### Sobre o notebook 01_EDA_e_Treinamento_v10.ipynb:
 
